@@ -6,6 +6,10 @@ public class CyclicGraph {
         /**for a cyclic graph, number of vertices = number of edges*/
         if(N != E)
             return false;
+        
+        /**if N < 4, then it is cop-win*/
+        if(N < 4)
+            return false;
 
         int[] arr = new int[N+E];
         System.arraycopy(U, 0, arr, 0, N);
