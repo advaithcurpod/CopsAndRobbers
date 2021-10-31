@@ -11,7 +11,7 @@ public class Main {
 
         System.out.print("Enter number of vertices: ");
         N = sc.nextInt();
-
+        
         System.out.print("Enter number of edges: ");
         E = sc.nextInt();
         System.out.println();
@@ -36,9 +36,12 @@ public class Main {
          * if false, we cannot conclude anything*/
         if (CyclicGraph.checkCyclicGraph(N, E, U, V) == true) {
             System.out.println("The graph is cop win as it is cyclic");
-            return;
         }
-
+        else if(TreeGraph.isTree(N, U, V))
+        {
+        	System.out.println("Cop-win Graph ");
+        }
+        else
         copNumber.minimumCops(N, E, U, V);
     }
 }
