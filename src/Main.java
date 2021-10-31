@@ -35,7 +35,7 @@ public class Main {
         /**if true, it is definitely ROBBER WIN graph
          * if false, we cannot conclude anything*/
         if (CyclicGraph.checkCyclicGraph(N, E, U, V) == true) {
-            System.out.println("The graph is cop win as it is cyclic");
+            System.out.println("The graph is robber win as it is cyclic");
         }
         else if(TreeGraph.isTree(N, U, V))
         {
