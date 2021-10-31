@@ -1,5 +1,3 @@
-package Sem3.DIscMath;
-
 import java.util.*;
 
 class copNumber {
