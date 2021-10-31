@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Cops & Robbers\n" +
+                "Given a graph, this program will determine if the graph is cop win or robber win\n");
+
         int N, E;
         Scanner sc = new Scanner(System.in);
 
@@ -29,19 +32,8 @@ public class Main {
             System.out.println();
         }
 
-        System.out.print("U = [");
-        for(int i : U){
-            System.out.print(i + " ");
-        }
-        System.out.print("]");
-
-        System.out.println();
-
-        System.out.print("V = [");
-        for(int i : V){
-            System.out.print(i + " ");
-        }
-        System.out.print("]");
-        System.out.println();
+        /**if true, it is definitely ROBBER WIN graph
+         * if false, we cannot conclude anything*/
+        System.out.println(CyclicGraph.checkCyclicGraph(N, E, U, V));
     }
 }
