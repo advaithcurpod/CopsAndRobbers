@@ -34,6 +34,11 @@ public class Main {
 
         /**if true, it is definitely ROBBER WIN graph
          * if false, we cannot conclude anything*/
-        System.out.println(CyclicGraph.checkCyclicGraph(N, E, U, V));
+        if (CyclicGraph.checkCyclicGraph(N, E, U, V) == true) {
+            System.out.println("The graph is cop win as it is cyclic");
+            return;
+        }
+
+        copNumber.minimumCops(N, E, U, V);
     }
 }
