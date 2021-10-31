@@ -11,7 +11,7 @@ public class Main {
 
         System.out.print("Enter number of vertices: ");
         N = sc.nextInt();
-        
+
         System.out.print("Enter number of edges: ");
         E = sc.nextInt();
         System.out.println();
@@ -32,16 +32,24 @@ public class Main {
             System.out.println();
         }
 
+        if(CompleteGraph.checkCompleteGraph(N, E, U, V)){
+            System.out.println("COP-WIN graph\nIt is a complete graph\nIn a complete graph, every vertex is connected to every other vertex of the graph\n");
+        }
+
         /**if true, it is definitely ROBBER WIN graph
          * if false, we cannot conclude anything*/
-        if (CyclicGraph.checkCyclicGraph(N, E, U, V) == true) {
-            System.out.println("The graph is robber win as it is cyclic");
+        else if (CyclicGraph.checkCyclicGraph(N, E, U, V)) {
+            System.out.println("The graph is robber win as it is cyclic\nCop number = 2");
         }
-        else if(TreeGraph.isTree(N, U, V))
-        {
-        	System.out.println("Cop-win Graph ");
+
+        else if(TreeGraph.isTree(N, U, V)) {
+            System.out.println("Cop-win Graph.\nCop number = 1");
         }
-        else
+
+        else{
+            System.out.println("It is neither a cyclic graph nor a Tree. Hence, for now, it cannot be concluded.");
+        }
+
         copNumber.minimumCops(N, E, U, V);
     }
 }

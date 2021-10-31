@@ -1,6 +1,6 @@
 import java.util.*;
 
-class copNumber {
+public class copNumber {
 
     // Function to count the minimum
 // number of color required
@@ -74,9 +74,10 @@ class copNumber {
             minCops = Math.max(minCops, cops[i]);
         }
 
-        // Print the minimum no. of
-        // cops required.
-        System.out.println("The number of cops required to make it a COP WIN will be less than or equal to:");
+        // Print the minimum number of cops required.
+        System.out.print("The number of cops required to make it a COP-WIN will be less than or equal to: ");
+        if(minCops > 4)
+            minCops = 4;
         System.out.print(minCops - 1 + "\n");
     }
 
