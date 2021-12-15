@@ -60,9 +60,13 @@ public class Main {
         else if(TreeGraph.isTree(N, U, V)) {
             System.out.println("Cop-win Graph.\nCop number = 1");
         }
-
         else{
-            System.out.println("It is neither a cyclic graph nor a Tree. Hence, for now, it cannot be concluded.");
+            Cop_n_robber test = new Cop_n_robber();
+            test.checkCycle(N,adj);
+            if(test.rob == true)
+            System.out.println("Robber winning graph");
+            else
+            System.out.println("Cop winning graph");
         }
 
         copNumber.minimumCops(N, E, U, V);
