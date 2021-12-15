@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,14 +12,18 @@ public class Main {
 
         System.out.print("Enter number of vertices: ");
         N = sc.nextInt();
-
+        
         System.out.print("Enter number of edges: ");
         E = sc.nextInt();
         System.out.println();
 
         int[] U = new int[E];
         int[] V = new int[E];
-
+        ArrayList<ArrayList<Integer>>adj = new ArrayList<ArrayList<Integer> >();
+        for(int i = 0;i<N;i++)
+        {
+            adj.add(new ArrayList<Integer>());
+        }
         for(int i = 0; i < E; i++){
             do {
                 System.out.print("First vertex number: ");
@@ -29,9 +34,19 @@ public class Main {
                 System.out.print("Connected vertex number: ");
                 V[i] = sc.nextInt();
             }while (!(V[i] > 0 && V[i] <= N));
+            adj.get(U[i]-1).add(V[i]-1);
+            adj.get(V[i]-1).add(U[i]-1);
             System.out.println();
         }
-
+        // For testing remove later....
+        // for(int i = 0;i<N;i++)
+        // {
+        //     for(int j = 0;j<adj.get(i).size();j++)
+        //     {
+        //         System.out.printf("%d ",adj.get(i).get(j));
+        //     }
+        //     System.out.println();
+        // }
         if(CompleteGraph.checkCompleteGraph(N, E, U, V)){
             System.out.println("COP-WIN graph\nIt is a complete graph\nIn a complete graph, every vertex is connected to every other vertex of the graph\n");
         }
