@@ -1,5 +1,3 @@
-package Sem3.DIscMath;
-
 // A Java program that implements the greedy algorithm for the graph coloring
 
 import java.util.LinkedList;
@@ -93,60 +91,7 @@ public class Graphs {
             Arrays.fill(avail, true);
         }
 
-// printing the result
-//        for (int n = 0; n < N; n++) {
-//            System.out.println("Node " + n + " ---> Color - " + res[n]);
-//        }
-// for finding the chromatic number of the graph
         findChromticNo(res);
     }
-
-
-    // main method
-//    public static void main(String argvs[]) {
-//// creating a graph that contains
-//// 5 nodes
-//        Graphs graph1 = new Graphs(4);
-//
-//// creating edges between nodes
-////        graph1.addingEdge(1, 2);
-////        graph1.addingEdge(1, 5);
-////        graph1.addingEdge(2, 3);
-////        graph1.addingEdge(2, 5);
-////        graph1.addingEdge(3, 4);
-////        graph1.addingEdge(4, 5);
-//
-//        graph1.addingEdge(0, 1);
-//        graph1.addingEdge(0, 2);
-//        graph1.addingEdge(0, 3);
-//        graph1.addingEdge(1, 2);
-//        graph1.addingEdge(1, 3);
-//        graph1.addingEdge(2, 3);
-//
-//
-//        System.out.println("Coloring of the graph 1 is: ");
-//
-//// invoking the method greedyColorNodes() to color the nodes
-//        graph1.greedyColorNodes();
-//
-//        System.out.println();
-//
-//// creating a graph that contains
-//// 4 nodes
-//        Graphs graph2 = new Graphs(4);
-//
-//        System.out.println("Coloring of the graph 2 is: ");
-//
-//// creating edges between nodes
-//        graph2.addingEdge(0, 1);
-//        graph2.addingEdge(0, 2);
-//        graph2.addingEdge(1, 3);
-//        graph2.addingEdge(2, 3);
-//
-//// invoking the method greedyColorNodes() to color the nodes
-//        graph2.greedyColorNodes();
-//
-//
-//    }
 
 }
