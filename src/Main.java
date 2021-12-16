@@ -12,7 +12,6 @@ public class Main {
 
         System.out.print("Enter number of vertices: ");
         N = sc.nextInt();
-        Graphs graph1 = new Graphs(N);
 
         System.out.print("Enter number of edges: ");
         E = sc.nextInt();
@@ -20,10 +19,7 @@ public class Main {
 
         int[] U = new int[E];
         int[] V = new int[E];
-        ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>();
-        for (int i = 0; i < N; i++) {
-            adj.add(new ArrayList<Integer>());
-        }
+        
         for (int i = 0; i < E; i++) {
             do {
                 System.out.print("First vertex number: ");
@@ -34,19 +30,14 @@ public class Main {
                 System.out.print("Connected vertex number: ");
                 V[i] = sc.nextInt();
             } while (!(V[i] > 0 && V[i] <= N));
-            adj.get(U[i] - 1).add(V[i] - 1);
-            adj.get(V[i] - 1).add(U[i] - 1);
+          
             System.out.println();
         }
-        // For testing remove later....
-        // for(int i = 0;i<N;i++)
-        // {
-        //     for(int j = 0;j<adj.get(i).size();j++)
-        //     {
-        //         System.out.printf("%d ",adj.get(i).get(j));
-        //     }
-        //     System.out.println();
-        // }
+        Graphs graph1 = new Graphs(N);
+        for (int i = 0; i < U.length; i++) {
+            graph1.addingEdge(U[i] - 1, V[i] - 1);
+        }
+
         if (CompleteGraph.checkCompleteGraph(N, E, U, V)) {
             System.out.println("COP-WIN graph\nIt is a complete graph\nIn a complete graph, every vertex is connected to every other vertex of the graph\n");
         }
@@ -54,21 +45,13 @@ public class Main {
         /**if true, it is definitely ROBBER WIN graph
          * if false, we cannot conclude anything*/
         else if (CyclicGraph.checkCyclicGraph(N, E, U, V)) {
-            System.out.println("The graph is robber win as it is cyclic");
-            for (int i = 0; i < U.length; i++) {
-                graph1.addingEdge(U[i] - 1, V[i] - 1);
-            }
+            System.out.println("The graph is robber win as it is cyclic");  
             graph1.greedyColorNodes();
         } else if (TreeGraph.isTree(N, U, V)) {
             System.out.println("Cop-win Graph.\nCop number = 1");
         } else {
-            Cop_n_robber test = new Cop_n_robber();
-            test.checkCycle(N, adj);
-            if (test.rob == true) {
+            if (graph1.checkCycle() == true) {
                 System.out.println("Robber winning graph");
-                for (int i = 0; i < U.length; i++) {
-                    graph1.addingEdge(U[i] - 1, V[i] - 1);
-                }
                 graph1.greedyColorNodes();
             } else
                 System.out.println("Cop winning graph");

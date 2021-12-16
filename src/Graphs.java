@@ -8,7 +8,8 @@ import java.io.*;
 public class Graphs {
     private int N; // No. of nodes
     private LinkedList<Integer> adjList[]; //Adjacency List
-
+    private boolean end = false,rob = false;
+    private int length = 0;
     //Constructor
     Graphs(int n) {
         N = n;
@@ -18,15 +19,50 @@ public class Graphs {
         }
     }
 
-    // Method to create an edge into the graph
-// from node x to y and y to x
+    // Method to create an edge into the graph sfrom node x to y and y to x
     void addingEdge(int x, int y) {
-// The Graph is not directed
         adjList[x].add(y);
         adjList[y].add(x);
     }
+    public boolean checkCycle() {
+        boolean visited[] = new boolean[this.N];
+        for(int i = 0;i<this.N;i++)
+        visited[i] = false;    
+        this.length = 0;
 
-
+        for(int i = 0;i<this.N;i++)
+        {
+            if(visited[i] == false)
+            {
+                if(this.dfs(i,visited,-1) == true)
+                {
+                    if(this.length >= 4)
+                    {
+                        this.rob = true;
+                    }
+                    this.length = 0;
+                }
+            }
+        }
+        return this.rob;
+    }
+    public boolean dfs(int i,boolean visited[],int parent) {
+        visited[i] = true;
+        for(int j : adjList[i])
+        {
+            if(this.end) this.length = 0;
+            if(visited[j] == false)
+            {
+                this.length+=1;
+                if(this.dfs(j,visited,i));
+                return true;
+            }
+            else if(parent != j)
+            return true;
+        }
+        this.end = true;
+        return false;
+    }    
     // A method that finds the chromatic number of a graph
     void findChromticNo(int arr[]) {
 // caculating the size of the array
@@ -88,7 +124,6 @@ public class Graphs {
             }
 
             res[n] = clr; // Assigning the found color
-
 // For the next iteration, resetting the values back to true
             Arrays.fill(avail, true);
         }
