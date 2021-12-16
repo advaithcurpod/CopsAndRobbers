@@ -39,22 +39,22 @@ public class Main {
         }
 
         if (CompleteGraph.checkCompleteGraph(N, E, U, V)) {
-            System.out.println("COP-WIN graph\nIt is a complete graph\nIn a complete graph, every vertex is connected to every other vertex of the graph\n");
+            System.out.println("COP-WIN graph\nCop-number = 1");
         }
 
         /**if true, it is definitely ROBBER WIN graph
          * if false, we cannot conclude anything*/
         else if (CyclicGraph.checkCyclicGraph(N, E, U, V)) {
-            System.out.println("The graph is robber win as it is cyclic");  
+            System.out.println("ROBBER-WIN graph");
             graph1.greedyColorNodes();
         } else if (TreeGraph.isTree(N, U, V)) {
-            System.out.println("Cop-win Graph.\nCop number = 1");
+            System.out.println("COP-WIN graph\nCop-number = 1");
         } else {
             if (graph1.checkCycle() == true) {
-                System.out.println("Robber winning graph");
+                System.out.println("ROBBER-WIN graph");
                 graph1.greedyColorNodes();
             } else
-                System.out.println("Cop winning graph");
+                System.out.println("COP-WIN graph");
         }
 
     }
