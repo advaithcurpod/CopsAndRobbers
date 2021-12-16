@@ -54,7 +54,7 @@ public class Main {
                 System.out.println("ROBBER-WIN graph");
                 graph1.greedyColorNodes();
             } else
-                System.out.println("COP-WIN graph");
+                System.out.println("COP-WIN graph\nCop-number = 1");
         }
 
     }
