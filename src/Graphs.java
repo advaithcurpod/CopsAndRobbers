@@ -42,9 +42,11 @@ public class Graphs {
 
 // finding the chromatic Number of the graph
         int chromaticNo = hashSet.size();
-
-
-        System.out.println("The cop number of the graph is at-most: " + (chromaticNo - 1));
+        int copNumber = chromaticNo - 1;
+        if (copNumber == 1) {
+            copNumber = 2;
+        }
+        System.out.println("The cop number of the graph is at-most: " + (copNumber));
 
     }
 
